@@ -17,12 +17,12 @@ const CardType = styled.span`
 font-size: 14px;
 `
 interface ICardProps {
-    time: number | undefined
-    dataType: string
+    time: number;
+    dataType: string;
 }
 
 const Card = (props: ICardProps) => {
-    const { time, dataType } = props
+    const { time, dataType } = props;
     const { t } = useTranslation();
     return (
         <CardWraper>

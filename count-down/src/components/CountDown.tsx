@@ -9,11 +9,16 @@ margin: auto;
 gap: 10px;
 justify-content: center;
 `
-
+interface TimeLeft {
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+}
 // calculateTimeLeft - function taken from stakoverflow - seems ok to me, I've added types
 const calculateTimeLeft = () => {
     let difference = +new Date('12/12/2021') - +new Date();
-    let timeLeft: { days?: number, hours?: number, minutes?: number, seconds?: number } = {};
+    let timeLeft: TimeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
     if (difference > 0) {
         timeLeft = {
@@ -29,16 +34,16 @@ const calculateTimeLeft = () => {
 }
 
 const CountDown = () => {
-    const [days, setDays] = useState<number | undefined>()
-    const [hours, setHours] = useState<number | undefined>()
-    const [minutes, setMinutes] = useState<number | undefined>()
-    const [seconds, setSeconds] = useState<number | undefined>()
+    const [days, setDays] = useState<number>(0)
+    const [hours, setHours] = useState<number>(0)
+    const [minutes, setMinutes] = useState<number>(0)
+    const [seconds, setSeconds] = useState<number>(0)
 
     const cards = [
-        { name: 'seconds', value: seconds, setValue: setSeconds },
-        { name: 'minutes', value: minutes, setValue: setMinutes },
-        { name: 'hours', value: hours, setValue: setHours },
-        { name: 'days', value: days, setValue: setDays },
+        { name: 'seconds', value: seconds },
+        { name: 'minutes', value: minutes },
+        { name: 'hours', value: hours },
+        { name: 'days', value: days },
 
     ]
     useEffect(() => {
@@ -56,7 +61,7 @@ const CountDown = () => {
             <CardsWrapper>
                 {cards.map(el => {
                     return (
-                        <Card time={el.value} dataType={el.name} />
+                        <Card key={el.name} time={el.value} dataType={el.name} />
                     )
                 })}
             </CardsWrapper></div>
