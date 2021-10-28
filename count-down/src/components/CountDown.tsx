@@ -40,10 +40,10 @@ const CountDown = () => {
     const [seconds, setSeconds] = useState<number>(0)
 
     const cards = [
-        { name: 'seconds', value: seconds },
-        { name: 'minutes', value: minutes },
-        { name: 'hours', value: hours },
         { name: 'days', value: days },
+        { name: 'hours', value: hours },
+        { name: 'minutes', value: minutes },
+        { name: 'seconds', value: seconds },
 
     ]
     useEffect(() => {
